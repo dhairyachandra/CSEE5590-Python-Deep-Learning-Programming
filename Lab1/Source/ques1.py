@@ -1,35 +1,24 @@
-# Given a collection of integers that might contain duplicates, nums, return all possible subsets
+def subset(arr, n):
+    _list = []
 
-def findLongestSubstring(string):
-    n = len(string)
-    st = 0
-    maxlen = 0
-    start = 0
-    temp = {}
-    # Last occurrence of first
-    # character is index 0
-    temp[string[0]] = 0
+    for i in range(2 ** n):
+        subset = ""
+        # consider each element in the set
+        for j in range(n):
+            if (i & (1 << j)) != 0:
+                subset += str(arr[j]) + "|"
+        # if subset is encountered for the first time
+        if subset not in _list and len(subset) > 0:
+            _list.append(subset)
+            # consider every subset
+    for subset in _list:
+        # split the subset and print its elements
+        arr = subset.split('|')
+        for string in arr:
+            print(string, end=" ")
+        print()
 
-    for i in range(1, n):
-        if string[i] not in temp:
-            temp[string[i]] = i
-
-        else:
-            if temp[string[i]] >= st:
-                currlen = i - st
-                if maxlen < currlen:
-                    maxlen = currlen
-                    start = st
-                st = temp[string[i]] + 1
-            temp[string[i]] = i
-    if maxlen < i - st:
-        maxlen = i - st
-        start = st
-    return string[start: start + maxlen]
-
-if __name__ == "__main__":
-    # taking input from user
-    string = input('Enter the string:')
-    # call function to find the longest substring and pass the input string
-    tup = (findLongestSubstring(string), len(list(findLongestSubstring(string))))
-    print(tup)
+if __name__ == '__main__':
+    arr = [1, 2, 2]
+    n = len(arr)
+    subset(arr, n)
