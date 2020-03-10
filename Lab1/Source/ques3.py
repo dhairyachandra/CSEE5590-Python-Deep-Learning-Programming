@@ -1,15 +1,15 @@
 import random
 
-class Flight:
+class flight:
     # Flight class - Default constructor
-    def __init__(self, airline_name, flight_number):
-        self.airline_name = airline_name
-        self.flight_number = flight_number
+    def __init__(self, airline, flight):
+        self.airline = airline
+        self.flight = flight
 
     # Displaying flight details
     def flight_details(self):
-        print('Airlines : ', self.airline_name)
-        print('Flight number : Boeing', self.flight_number)
+        print('Airlines : ', self.airline)
+        print('Flight number : Boeing', self.flight)
 
 
 class employee:
@@ -39,16 +39,8 @@ class Passenger:
 
 
 class Baggage:
-    cabin_bag = 1
-    bag_fare = 0
-
-    # calculating cost for checked in bags more than 2
-    def __init__(self, checked_bags):
-        self.checked_bags = checked_bags
-        if checked_bags > 2:
-            for i in checked_bags:
-                self.bag_fare += 100
-        print("Number of checked bags allowed: ", checked_bags, "bag fare: $", self.bag_fare)
+    cabin_bag = 2
+    print("Number of checked bags allowed: ", cabin_bag)
 
 
 class Fare(Baggage):
@@ -70,7 +62,9 @@ class Fare(Baggage):
         print("Total Fare before class type: $", Fare.total_fare)
 
 
-class Ticket(Passenger, Fare):  # Multiple inheritence
+# Displaying the passenger ticket
+
+class ticketdetails(Passenger, Fare):  # Multiple inheritence
     def __init__(self):
         print("Passenger name:", Passenger.name)  # Accessing parent class variable
         if Passenger.class_type == "business":
@@ -82,16 +76,16 @@ class Ticket(Passenger, Fare):  # Multiple inheritence
 
 
 print("------------- Flight Details --------------")
-f1 = Flight('Air India', 777)
+f1 = flight('Air India', 777)
 f1.flight_details()
 print("------------- Employee Details --------------")
 e0 = employee('4588124', 'Dhairya Chandra', 22, 'Male')
 e0.e_display()
 
 print("------------- Book Ticket --------------")
-p1 = Passenger()
+p = Passenger()
 
 fare1 = Fare()
 
 print("------------- Passenger Details --------------")
-t = Ticket()
+t = ticketdetails()

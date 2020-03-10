@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 # Dataset: https://www.kaggle.com/ronitf/heart-disease-uci
 train = pd.read_csv('heart.csv')
 
-# Working with Numeric Features
+# fetching top 4 features
 numeric_features = train.select_dtypes(include=[np.number])
 corr = numeric_features.corr()
 plt.figure(figsize=(20,20));
@@ -19,7 +19,7 @@ sns.heatmap(corr, annot=True, cmap="YlGnBu")
 plt.show();
 print (corr['age'].sort_values(ascending=False)[:4], '\n')
 
-# Null values
+# Printing the Null values
 nulls = pd.DataFrame(train.isnull().sum().sort_values(ascending=False)[:25])
 nulls.columns = ['Null Count']
 nulls.index.name = 'Feature'

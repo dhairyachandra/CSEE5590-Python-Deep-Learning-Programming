@@ -16,13 +16,13 @@ print(nulls)
 data = train.select_dtypes(include=[np.number]).interpolate().dropna()
 
 
-# Using Pearson Correlation and ploting in the heat map
+# Using Pearson Correlation we are ploting in the heat map
 plt.figure(figsize=(20,20))
 cor = data.corr()
 sns.heatmap(cor, annot=True, cmap=plt.cm.Reds)
 plt.show()
 
-# Printing the correlation with the target feature "quality"
+# Printing the correlation with the target feature
 print(cor['target'].sort_values(ascending=False)[:5],'\n')
 
 # Build a multiple linear regression model
@@ -32,6 +32,8 @@ X = data.drop(['target'],axis =1)
 print(X.shape)
 
 from sklearn.model_selection import train_test_split
+
+# Splitting data for test and train
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=.20)
 from sklearn import linear_model
 lr = linear_model.LinearRegression()

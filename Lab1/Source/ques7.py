@@ -42,6 +42,7 @@ with open("trigram.txt", "w") as tri:
 f1 = open("nlp_input.txt", "r", encoding="utf8", errors='ignore')
 fileread = f1.read()
 
+# Fetching most common word
 tg = []
 word_tokens = nltk.word_tokenize(fileread)
 for t in nltk.ngrams(word_tokens, 3):

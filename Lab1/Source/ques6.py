@@ -19,7 +19,7 @@ print(nulls)
 # handling the missing value
 data = dataset.select_dtypes(include=[np.number]).interpolate().dropna()
 
-# find the most correlated features
+# find the top 4 correlated features
 numeric_features = dataset.select_dtypes(include=[np.number])
 corr = numeric_features.corr()
 print (corr['quality'].sort_values(ascending=False)[:4], '\n')
@@ -31,6 +31,7 @@ X_scaled_array = scaler.transform(data)
 X_scaled = pd.DataFrame(X_scaled_array, columns = data.columns)
 
 wcss = []
+
 # elbow method to know the number of clusters
 for i in range(2,12):
     kmeans = KMeans(n_clusters=i,init='k-means++',max_iter=300,n_init=10,random_state=0)

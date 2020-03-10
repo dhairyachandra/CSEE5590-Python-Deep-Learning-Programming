@@ -12,7 +12,7 @@ dict1.update(dict2)
 print('Concatenated dictionary :', dict1)
 
 # Sorting dictionaries by values
-sortdict =  sorted(dict1.items(), key=lambda x: x[1])
+sortdict = sorted(dict1.items(), key=lambda x: x[1])
 
 # Printing the sorted dictionary
 print('Sorted dictionary :', sortdict)
